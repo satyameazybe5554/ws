@@ -46,10 +46,9 @@ const PORT = 443;
 const server = http.createServer(app);
 const cors = require('cors');
 const { Server } = require("socket.io");
-const io = new Server(server);
-app.use(express.static(path.join(__dirname, "public")));
+const io = new Server(server);;
 app.use(cors({
-    origin: 'http://localhost:8080', // Replace with your client URL
+    origin: 'http://localhost:8080',
     methods: ['GET', 'POST']
   }));
 
