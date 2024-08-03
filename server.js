@@ -8,15 +8,25 @@ const { Server } = require("socket.io");
 const cors = require('cors');
 const io = new Server(server);
 app.use(express.static(path.join(__dirname, "public")));
-
-
-io.on("connection", (socket) => {
-    console.log("A new user has connected", socket.id);
-});
 app.use(cors({
     origin: 'http://localhost:4000', // Replace with your client URL
     methods: ['GET', 'POST']
   }));
+
+io.on("connection", (socket) => {
+    console.log("A new user has connected", socket.id);
+    socket.on("message", (msg) => {
+        console.log(`Message from ${socket.id}: ${msg}`);
+        io.emit("message", msg);
+    });
+    socket.on("disconnect", () => {
+        console.log("User disconnected", socket.id);
+    });
+    socket.on("error", (error) => {
+        console.error("Socket.IO error:", error);
+    });
+});
+
 
 
 server.listen(PORT, () => {
