@@ -46,7 +46,7 @@ io.on("connection", (socket) => {
     });
 });
 app.get('/',(req,res)=>{
-    console.log("WS Running Successful")
+    res.send("WS Running Successful");
 })
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
