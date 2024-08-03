@@ -45,6 +45,7 @@ const app = express();
 const PORT = 443;
 const server = http.createServer(app);
 const cors = require('cors');
+const { Server } = require("socket.io");
 const io = new Server(server);
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors({
