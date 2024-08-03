@@ -66,7 +66,7 @@ io.on("connection", (socket) => {
         console.error("Socket.IO error:", error);
     });
 });
-server.get('/',(req,res)=>{
+app.get('/',(req,res)=>{
     res.send("WS Running Successful");
 })
 server.listen(PORT, () => {
