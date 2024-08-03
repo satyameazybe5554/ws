@@ -52,7 +52,7 @@
     </div>
 
     <script>
-        const socket = io();
+        const socket = io('wss://ws-1-tfua.onrender.com/');
 
         socket.on("message", (msg) => {
             const messages = document.getElementById("messages");
