@@ -39,18 +39,18 @@
 // });
 
 
-const https = require("https");
+const http = require("http");
 const express = require("express");
 const app = express();
 const PORT = 443;
-const server = https.createServer(app);
-const cors = require('cors');
+const server = http.createServer(app);
+// const cors = require('cors');
 const { Server } = require("socket.io");
 const io = new Server(server);;
-app.use(cors({
-    origin: 'http://localhost:8080',
-    methods: ['GET', 'POST']
-  }));
+// app.use(cors({
+//     origin: 'http://localhost:8080',
+//     methods: ['GET', 'POST']
+//   }));
 
 
 io.on("connection", (socket) => {
